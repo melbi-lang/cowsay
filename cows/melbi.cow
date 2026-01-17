@@ -1,0 +1,7 @@
+##
+## 🖖 Melbi
+##
+$the_cow = <<EOC;
+   $thoughts
+    🖖
+EOC
