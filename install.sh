@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # Configuration
 COW_DIR="$HOME/.custom_cows"
 GITHUB_USER="melbi-lang"
@@ -10,10 +12,16 @@ RAW_URL="https://raw.githubusercontent.com/$GITHUB_USER/$REPO_NAME/main/cows"
 COWS=("melbi.cow" "melbi-large.cow" "melbi-large-tc.cow")
 
 echo "🖖 Welcome to Melbi cows installer."
+echo
 echo "This script will download custom cows and set up your environment."
 echo "Cows will be stored in: $COW_DIR"
 echo "And COWPATH will be added to your shell configuration."
-read -p "Press [Enter] to continue or [Ctrl+C] to cancel..."
+echo
+read -n 1 -p "Continue? [y/N]: " response
+if [[ ! "$response" =~ ^[Yy]$ ]]; then
+  echo "Aborting installation."
+  exit 1
+fi
 echo
 
 echo "🐮 Setting up your custom cows..."
@@ -26,6 +34,7 @@ for cow in "${COWS[@]}"; do
     echo "  -> Downloading $cow..."
     curl -sSL -o "$COW_DIR/$cow" "$RAW_URL/$cow"
 done
+echo
 
 # Detect Shell Config
 if [[ "$SHELL" == */zsh ]]; then

@@ -9,7 +9,7 @@ A collection of Melbi-related high-fidelity, **Truecolor (24-bit)** ASCII art fo
 Run this one-liner to download the cows and set up your `COWPATH` automatically:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/melbi-lang/cowsay/main/install.sh | bash
+bash -c "$(curl -sSL https://raw.githubusercontent.com/melbi-lang/cowsay/main/install.sh)"
 ```
 
 After that just run from any directory:
